@@ -1,0 +1,19 @@
+{
+  "name": "@vkcyan/lib",
+  "version": "0.0.1",
+  "main": "./source/index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "wu.vkcyan@gmail.com",
+  "description": "common tool functions",
+  "bugs": {
+    "url": "https://github.com/vkcyan/lib/issues"
+  },
+  "homepage": "https://github.com/vkcyan/lib#readme",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.15"
+  }
+}
