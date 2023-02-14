@@ -1,17 +1,17 @@
 {
-  "name": "@vkcyan/lib",
+  "name": "@yipai-front-end/lib",
   "version": "0.0.1",
   "main": "./source/index.js",
   "types": "./index.d.ts",
   "scripts": {
     "build": "tsc"
   },
-  "author": "wu.vkcyan@gmail.com",
+  "author": "wukai@e2pai.net",
   "description": "common tool functions",
   "bugs": {
-    "url": "https://github.com/vkcyan/lib/issues"
+    "url": "https://github.com/yipai-front-end/lib/issues"
   },
-  "homepage": "https://github.com/vkcyan/lib#readme",
+  "homepage": "https://github.com/yipai-front-end/lib#readme",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.11.15"
