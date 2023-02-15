@@ -2,14 +2,35 @@
  * object键全部转小写
  * @param obj 待处理对象
  */
-export declare function toLowerCase(obj: { [k: string]: any }): { [k: string]: any }
+export declare function toLowerCase(obj: { [k: string]: any }): {
+  [k: string]: any
+}
 
 /**
- * 
  * @param func 方法
  * @param wait 防抖时间
  */
 export declare function debounce(func: Function, wait: number): () => void
+
+/**
+ * @param func 方法
+ * @param wait 节流时间
+ */
+export declare function throttle(func: Function, wait: number): () => void
+
+/**
+ * 为兼容mp项目添加的防抖
+ * @param func 方法
+ * @param wait 防抖时间
+ */
+export declare function _debounce(func: Function, wait: number): () => void
+
+/**
+ * 为兼容mp项目添加的节流
+ * @param func 方法
+ * @param wait 节流时间
+ */
+export declare function _throttle(func: Function, wait: number): () => void
 
 /**
  * 深度克隆
@@ -29,7 +50,11 @@ export declare function formatTimeArray(duration: number): Array<string>
  * @param format 时间格式
  * @param isZero 10以下是否补零
  */
-export declare function parseTime(time: number, format?: string, isZero?: boolean): string
+export declare function parseTime(
+  time: number,
+  format?: string,
+  isZero?: boolean
+): string
 
 /**
  * 获取语义化的间隔时间
