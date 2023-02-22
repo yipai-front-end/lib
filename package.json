@@ -1,19 +1,35 @@
 {
   "name": "@yipai-front-end/lib",
-  "version": "0.0.4",
-  "main": "./source/index.js",
-  "types": "./index.d.ts",
-  "scripts": {
-    "build": "tsc"
-  },
+  "private": false,
+  "version": "0.0.5",
+  "type": "module",
+  "files": [
+    "dist",
+    "source"
+  ],
   "author": "wukai@e2pai.net",
   "description": "common tool functions",
+  "license": "ISC",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/yipai-front-end/lib/issues"
   },
   "homepage": "https://github.com/yipai-front-end/lib#readme",
-  "license": "ISC",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.umd.cjs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
   "devDependencies": {
-    "@types/node": "^18.11.15"
+    "@types/node": "^18.14.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vite-plugin-dts": "^2.0.0-beta.3"
   }
 }
