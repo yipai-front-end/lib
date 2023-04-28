@@ -22,6 +22,9 @@ export function getStorage(key: string) {
   }
 
   let typeOrigin = localStorage.getItem(key) || ''
+  if (typeOrigin === '') {
+    return ''
+  }
   try {
     let data = JSON.parse(typeOrigin)
     return data.value || typeOrigin
