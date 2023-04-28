@@ -9,7 +9,7 @@ export function setStorage(key: string, value: any): void {
     new Error('请传入缓存值')
   }
   const type = typeof value
-  const data = JSON.stringify({ type, value })
+  const data = type === 'string' ? value : JSON.stringify({ type, value })
   localStorage.setItem(key, data)
 }
 
@@ -24,7 +24,7 @@ export function getStorage(key: string) {
   let typeOrigin = localStorage.getItem(key) || ''
   try {
     let data = JSON.parse(typeOrigin)
-    return data.value
+    return data.value || typeOrigin
   } catch (error) {
     return typeOrigin
   }
