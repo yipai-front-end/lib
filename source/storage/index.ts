@@ -3,10 +3,11 @@
  */
 export function setStorage(key: string, value: any): void {
   if (!key) throw new Error('请传入正确的缓存键')
+  if (value === undefined) throw new Error('请传入缓存值')
+
   const type = typeof value
-  const isString = type === 'string'
-  if (type === 'undefined') throw new Error('请传入缓存值')
-  const data = isString ? value : JSON.stringify({ type, value })
+  const data = type === 'string' ? value : JSON.stringify({ type, value })
+
   localStorage.setItem(key, data)
 }
 
