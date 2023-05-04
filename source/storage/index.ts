@@ -23,7 +23,7 @@ export function getStorage(key: string) {
     let data = JSON.parse(typeOrigin)
 
     // 没有type 则判断为字符串类型
-    if (data.type === 'undefined') return typeOrigin
+    if (data.type === undefined) return typeOrigin
     // NaN 类型存储时会变成null
     if (data.type === 'number' && data.value == null) return NaN
 
