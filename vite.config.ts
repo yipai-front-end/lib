@@ -1,15 +1,22 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
-
 import dts from 'vite-plugin-dts'
 export default defineConfig({
   build: {
-    outDir: 'dist',
+    minify: false, //压缩
+    rollupOptions: {
+      input: ['./source/index.ts'],
+      output: [
+        {
+          format: 'es', // 打包格式
+          entryFileNames: '[name].mjs', // 打包后文件名
+          preserveModules: true, // 让打包目录和我们目录对应
+          exports: 'named',
+          dir: './dist', // 配置打包根目录
+        },
+      ],
+    },
     lib: {
-      entry: resolve(__dirname, 'source/index'),
-      name: 'Counter',
-      formats: ['es'],
-      fileName: 'index',
+      entry: './source/index.ts',
     },
   },
   plugins: [dts()],

@@ -6,19 +6,11 @@
     <title>Vite App</title>
   </head>
   <script type="module">
-    import { debounce } from '/source/index.ts'
-    console.log(debounce)
-    let clickDb = debounce((value) => {
-      console.log(value, 'value')
-    }, 300)
-    let debounceId = document.getElementById('debounceId')
-    debounceId.addEventListener('click', () => {
-      clickDb(1111)
-    })
+    import { setStorage, getStorage } from './dist/index.mjs'
+    setStorage('a', '123')
+    console.log(getStorage('a'))
   </script>
   <body>
-    <div id="app">
-      <button id="debounceId">防抖</button>
-    </div>
+    <div id="app"></div>
   </body>
 </html>
