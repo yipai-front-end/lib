@@ -44,7 +44,7 @@ export function throttle(fn: (...arg: any[]) => void, delay = 500) {
  * @param data
  * @returns
  */
-export function deepClone(data: any) {
+export function deepClone<T>(data: T): T {
   return JSON.parse(JSON.stringify(data))
 }
 
