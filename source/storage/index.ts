@@ -22,7 +22,7 @@ export function getStorage(key: string) {
   try {
     let data = JSON.parse(typeOrigin)
     if (typeof data === 'object') {
-      return data.value
+      return data.value || data.data
     } else {
       return String(data)
     }
