@@ -72,3 +72,11 @@ export function copyText(text: string) {
   document.execCommand('Copy')
   document.body.removeChild(input)
 }
+
+/**
+ * 根据最大值和最小值获取随机数
+ * @returns
+ */
+export function random(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min)) + min
+}

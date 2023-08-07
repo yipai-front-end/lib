@@ -1,8 +1,12 @@
 {
   "name": "@yipai-front-end/lib",
   "private": false,
-  "version": "0.0.11",
+  "version": "0.0.12",
   "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
   "files": [
     "dist",
     "source"
@@ -19,10 +23,6 @@
   "exports": {
     "types": "./dist/index.d.ts",
     "import": "./dist/index.mjs"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build"
   },
   "devDependencies": {
     "@types/node": "^18.14.0",

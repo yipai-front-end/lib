@@ -8,6 +8,7 @@ type formatData = {
   a: number
 }
 type formatKey = 'y' | 'm' | 'd' | 'h' | 'i' | 's' | 'a'
+
 /**
  * 格式化time
  */

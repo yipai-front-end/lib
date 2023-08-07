@@ -1,3 +1,7 @@
+/**
+ * 兼容老版本的特殊方法
+ */
+
 let timeout: null | NodeJS.Timeout = null
 let _throttleRunning = false
 /**
