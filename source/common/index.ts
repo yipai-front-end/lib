@@ -80,3 +80,20 @@ export function copyText(text: string) {
 export function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min)) + min
 }
+
+/*
+ * 格式化数字
+ * @param price 未格式化文字
+ * @param  num 保留几位小数
+ */
+export function numberFun(price: number, num = 2) {
+  if (price > 0) {
+    if (String(price).includes('.')) {
+      return Number(price.toFixed(num))
+    } else {
+      return price
+    }
+  } else {
+    return price
+  }
+}
