@@ -40,12 +40,26 @@ export function throttle(fn: (...arg: any[]) => void, delay = 500) {
 }
 
 /**
- * 深克隆
- * @param data
- * @returns
+ * 对象深克隆
+ * 兼容key是undefined的情况
+ * 兼容时间对象
+ * 循环引用问题，暂时没遇到所有暂时不解决
  */
-export function deepClone<T>(data: T): T {
-  return JSON.parse(JSON.stringify(data))
+export function deepClone(obj: { [key: string]: any }) {
+  if (obj === null || typeof obj !== 'object') {
+    return obj
+  }
+  let cloneObj: { [key: string]: any } = Array.isArray(obj) ? [] : {}
+  Object.entries(obj).map(([key, value]) => {
+    if (obj.hasOwnProperty(key)) {
+      if (obj[key] instanceof Date) {
+        cloneObj[key] = new Date(obj[key])
+      } else {
+        cloneObj[key] = deepClone(value)
+      }
+    }
+  })
+  return cloneObj
 }
 
 /***
