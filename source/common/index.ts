@@ -173,7 +173,7 @@ export function formValidators(
   }
   let res: formValidatorsResultType = {
     status: errorMsg.length == 0,
-    message: deep ? '' : errorMsg[0].message,
+    message: !deep && errorMsg.length != 0 ? errorMsg[0].message : '',
     messages: deep ? errorMsg : [],
   }
   return res
