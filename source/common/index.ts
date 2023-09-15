@@ -111,3 +111,70 @@ export function numberFun(price: number, num = 2) {
     return price
   }
 }
+
+type formValidatorsErrorMsgType = { key: string; message: string }
+type formValidatorsResultType = {
+  status: boolean
+  message: string
+  messages: formValidatorsErrorMsgType[]
+}
+export type validatRules = {
+  [key: string]: {
+    message: string
+    required?: boolean
+    pattern?: RegExp
+    validator?: (value: any, key: string) => boolean
+  }[]
+}
+/**
+ * 根据传入的规则校验对象是否合法
+ * @param obj
+ * @param rules
+ * @param deep 是否需要所有错误信息
+ */
+export function formValidators(
+  obj: { [key: string]: any },
+  rules: validatRules,
+  deep: boolean = false
+): formValidatorsResultType {
+  // 只要一个结果还是需要全部结果？
+  // 返回所有有问题的校验结果
+  let errorMsg: formValidatorsErrorMsgType[] = []
+
+  function addErrorMsg(key: string, msg: string) {
+    errorMsg.push({ key, message: msg })
+  }
+  // 遍历规则
+  let rulesList = Object.entries(rules)
+  for (let i = 0; i < rulesList.length; i++) {
+    const [key, itemRules] = rulesList[i]
+    let verifyItem = obj[key]
+    for (let j = 0; j < itemRules.length; j++) {
+      const rule = itemRules[j]
+      let ruleResult = true
+      if (rule.required) {
+        // 校验是否必填
+        ruleResult = !(verifyItem == undefined || verifyItem == null || verifyItem == '')
+      } else if (rule.pattern) {
+        // 校验正则是否合法
+        ruleResult = rule.pattern.test(verifyItem)
+      } else if (rule.validator) {
+        // 校验自定义函数
+        ruleResult = rule.validator(verifyItem, key)
+      }
+      if (!ruleResult) {
+        addErrorMsg(key, rule.message)
+        break
+      }
+    }
+    if (!deep && errorMsg.length != 0) {
+      break
+    }
+  }
+  let res: formValidatorsResultType = {
+    status: errorMsg.length == 0,
+    message: deep ? '' : errorMsg[0].message,
+    messages: deep ? errorMsg : [],
+  }
+  return res
+}
