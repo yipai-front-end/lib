@@ -45,15 +45,15 @@ export function throttle(fn: (...arg: any[]) => void, delay = 500) {
  * 兼容时间对象
  * 循环引用问题，暂时没遇到所有暂时不解决
  */
-export function deepClone(obj: { [key: string]: any }) {
+export function deepClone<T>(obj: T): T {
   if (obj === null || typeof obj !== 'object') {
     return obj
   }
-  let cloneObj: { [key: string]: any } = Array.isArray(obj) ? [] : {}
+  let cloneObj: any = Array.isArray(obj) ? [] : {}
   Object.entries(obj).map(([key, value]) => {
     if (obj.hasOwnProperty(key)) {
-      if (obj[key] instanceof Date) {
-        cloneObj[key] = new Date(obj[key])
+      if (value instanceof Date) {
+        cloneObj[key] = new Date(value)
       } else {
         cloneObj[key] = deepClone(value)
       }
