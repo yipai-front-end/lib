@@ -178,3 +178,31 @@ export function formValidators(
   }
   return res
 }
+
+type pageScrollToType = {
+  /**
+   * 滚动高度
+   */
+  scrollTop: number
+  /**
+   * 滚动动画时长
+   */
+  duration: 300
+}
+
+/**
+ * 页面滚动到指定高度(动画暂不支持)
+ */
+export function pageScrollTo(params: pageScrollToType) {
+  // 获取当前滚动高度
+  scrollTo({
+    top: params.scrollTop,
+  })
+  // let currentScrollTop = document.documentElement.scrollTop
+  // let scrollDistance = currentScrollTop - scrollTop
+  // console.log('在当前基础上需要滚动的距离', scrollDistance)
+  // let oneDistance = scrollDistance / duration
+  // console.log('每毫秒滚动距离', oneDistance)
+  // function stepFun() {}
+  // requestAnimationFrame(stepFun)
+}

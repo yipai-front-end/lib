@@ -7,8 +7,9 @@ export {
   random,
   numberFun,
   formValidators,
-  type validatRules,
+  pageScrollTo,
 } from './common/index'
+export type { validatRules } from './common/index'
 export { formatTime, formatTimeArray, parseTime } from './time/index'
 export { _debounce, _throttle } from './special/index'
 export { setStorage, getStorage, removeStorage } from './storage/index'
