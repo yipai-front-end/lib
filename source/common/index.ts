@@ -3,12 +3,12 @@
  * @param obj 对象
  * @returns
  */
-export function toLowerCase(obj: any) {
-  let toobj: any = {}
+export function toLowerCase(obj: { [key: string]: any }) {
+  let toObj: any = {}
   for (const key in obj) {
-    toobj[key.toLowerCase()] = obj[key]
+    toObj[key.toLowerCase()] = obj[key]
   }
-  return toobj
+  return toObj
 }
 
 /**
@@ -185,24 +185,46 @@ type pageScrollToType = {
    */
   scrollTop: number
   /**
-   * 滚动动画时长
+   * 是否滚动
    */
-  duration: 300
+  behavior?: boolean
 }
 
 /**
- * 页面滚动到指定高度(动画暂不支持)
+ * 页面滚动到指定高度
  */
 export function pageScrollTo(params: pageScrollToType) {
   // 获取当前滚动高度
-  scrollTo({
+  window.scrollTo({
     top: params.scrollTop,
+    behavior: params.behavior ? 'smooth' : 'instant',
   })
-  // let currentScrollTop = document.documentElement.scrollTop
-  // let scrollDistance = currentScrollTop - scrollTop
-  // console.log('在当前基础上需要滚动的距离', scrollDistance)
-  // let oneDistance = scrollDistance / duration
-  // console.log('每毫秒滚动距离', oneDistance)
-  // function stepFun() {}
-  // requestAnimationFrame(stepFun)
+}
+
+/**
+ * 获取传入的url的参数部分，并转化为对象
+ */
+export function getUrlQuery(url: string) {
+  const query = url.split('?')[1]
+  if (query) {
+    const queryArr = query.split('&')
+    const queryObj: any = {}
+    queryArr.forEach((item) => {
+      const arr = item.split('=')
+      queryObj[arr[0]] = arr[1]
+    })
+    return queryObj
+  } else {
+    return {}
+  }
+}
+
+/**
+ * 将对象转化为url上面的参数
+ */
+export function setUrlQuery(obj: { [key: string]: any }) {
+  let queryString = Object.keys(obj)
+    .map((key) => `${key}=${obj[key]}`)
+    .join('&')
+  return queryString
 }
