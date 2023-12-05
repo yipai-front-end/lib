@@ -197,7 +197,7 @@ export function pageScrollTo(params: pageScrollToType) {
   // 获取当前滚动高度
   window.scrollTo({
     top: params.scrollTop,
-    behavior: params.behavior ? 'smooth' : 'instant',
+    behavior: (params.behavior ? 'smooth' : 'instant') as any,
   })
 }
 
