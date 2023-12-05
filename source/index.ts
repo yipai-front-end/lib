@@ -8,6 +8,8 @@ export {
   numberFun,
   formValidators,
   pageScrollTo,
+  getUrlQuery,
+  setUrlQuery,
 } from './common/index'
 export type { validatRules } from './common/index'
 export { formatTime, formatTimeArray, parseTime } from './time/index'
