@@ -100,15 +100,16 @@ export function random(min: number, max: number) {
  * @param price 未格式化文字
  * @param  num 保留几位小数
  */
-export function numberFun(price: number, num = 2) {
-  if (price > 0) {
-    if (String(price).includes('.')) {
-      return Number(price.toFixed(num))
-    } else {
-      return price
-    }
+export function numberFun(numbers: number, num = 2) {
+  numbers = Number(numbers)
+  if (isNaN(numbers)) {
+    console.warn('请传入合法数值')
+    return 0
+  }
+  if (!String(numbers).includes('.')) {
+    return numbers
   } else {
-    return price
+    return Number(numbers.toFixed(num))
   }
 }
 
