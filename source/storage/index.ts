@@ -24,7 +24,8 @@ export function getStorage(key: string) {
     if (typeof data === 'object') {
       return data.value || data.data
     } else {
-      return String(data)
+      // fix: JSON.parse之后的string，如果string是纯数字，会被识别成number类型，特别大的number数值会导致转化错误
+      return typeOrigin
     }
   } catch (error) {
     return typeOrigin
