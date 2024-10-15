@@ -1,7 +1,7 @@
 {
   "name": "@yipai-front-end/lib",
   "private": false,
-  "version": "0.0.23",
+  "version": "0.0.27",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -14,7 +14,8 @@
   "author": "wukai@e2pai.net",
   "description": "common tool functions",
   "license": "ISC",
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/yipai-front-end/lib/issues"
@@ -22,7 +23,8 @@
   "homepage": "https://github.com/yipai-front-end/lib#readme",
   "exports": {
     "types": "./dist/index.d.ts",
-    "import": "./dist/index.mjs"
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs"
   },
   "devDependencies": {
     "@types/node": "^18.14.0",

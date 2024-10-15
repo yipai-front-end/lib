@@ -13,6 +13,13 @@ export default defineConfig({
           exports: 'named',
           dir: './dist', // 配置打包根目录
         },
+        {
+          format: 'cjs',
+          entryFileNames: '[name].cjs',
+          preserveModules: true,
+          exports: 'named',
+          dir: './dist', // 配置打包根目录
+        },
       ],
     },
     lib: {
